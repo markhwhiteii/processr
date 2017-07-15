@@ -17,7 +17,7 @@ model1 <- function(iv, dv, mod, data) {
   coefs <- broom::tidy(lm(data[,dv] ~ data[,iv]*data[,mod]))
   coefs[,1] <- c("intercept", iv, mod, "interaction")
   
-  if (all(test[,mod] == 0 | test[,mod] == 1)) {
+  if (all(data[,mod] == 0 | data[,mod] == 1)) {
     sss <- simple_slope(iv, dv, mod, 0, data)
     sss <- rbind(sss, simple_slope(iv, dv, mod, 1, data))
   } else {
