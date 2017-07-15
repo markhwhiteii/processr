@@ -1,0 +1,18 @@
+Package: processr
+Title: R Implementation of the PROCESS Macro
+Version: 0.0.0.9000
+Authors@R: person("Mark", "White", email = "markhwhiteii@gmail.com", role = c("aut", "cre"))
+Description: Runs populat models from Hayes's PROCESS Macro for SPSS and SAS
+Depends: 
+  R (>= 3.4.1), 
+  lavaan (>= 0.5-23.1097),
+  broom (>= 0.4.2)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  R (>= 3.4.1), 
+  lavaan (>= 0.5-23.1097),
+  broom (>= 0.4.2)
+RoxygenNote: 6.0.1
+  
