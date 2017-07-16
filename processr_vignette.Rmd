@@ -135,3 +135,6 @@ kable(mod14result)
 ```
 
 Since this is second-stage moderation, now there are three b-paths: `b1` (or $b_1$) refers to the mediator on the dependent variable, `b2` (or $b_2$) refers to the moderator on the dependent variable, and `b3` (or $b_3$) is the interaction between the two on the dependent variable. The same interpretation is there for the rest of the labels. If the moderator is dichotomous, it will return conditional indirect effects when the moderator is 0 (`ind_0`) and 1 (`ind_1`).  
+<br>
+<br>
+<br>
