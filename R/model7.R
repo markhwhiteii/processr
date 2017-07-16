@@ -18,7 +18,7 @@
 #' @export
 model7 <- function(iv, dv, med, mod, data, samples=5000) {
   
-  if (all(test[,mod] == 0 | test[,mod] == 1)) {
+  if (all(data[,mod] == 0 | data[,mod] == 1)) {
     
     data[,"ivxmod"] <- data[,iv]*data[,mod]
     model <- paste0(med, " ~ a1*", iv, " + a2*", mod, " + a3*ivxmod
