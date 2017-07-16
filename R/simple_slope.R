@@ -5,12 +5,12 @@
 #' value, you can use this function, where you specify your own value at the moderator
 #' that you want to see the simple slope at.
 #' 
-#' @param iv The name of the independent variable, as a character string
-#' @param dv The name of the dependent variable, as a character string
-#' @param mod The name of the moderator, as a character string
-#' @param value The numeric value that you want to see the simple slope at
-#' @param data The data frame with the relevant variables
-#' @return The coefficient, standard error, t-statistic, and p-value of the simple slope
+#' @param iv The name of the independent variable, as a character string.
+#' @param dv The name of the dependent variable, as a character string.
+#' @param mod The name of the moderator, as a character string.
+#' @param value The numeric value that you want to see the simple slope at.
+#' @param data The data frame with the relevant variables.
+#' @return The coefficient, standard error, t-statistic, and p-value of the simple slope.
 #' @export
 simple_slope <- function(iv, dv, mod, value, data) {
   modv <- data[,mod] - value
