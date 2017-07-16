@@ -7,20 +7,20 @@
 model1(iv, dv, mod, data)
 }
 \arguments{
-\item{iv}{The name of the independent variable, as a character string}
+\item{iv}{The name of the independent variable, as a character string.}
 
-\item{dv}{The name of the dependent variable, as a character string}
+\item{dv}{The name of the dependent variable, as a character string.}
 
 \item{mod}{The name of the moderator, as a character string. If the moderator
 is numeric with only 0s and 1s, it will return the simple slopes at the values of
 0 and 1; if it is numeric otherwise, it will return the simple slopes at a standard
-deviation below the mean, a standard deviation above the mean, and at the mean}
+deviation below the mean, a standard deviation above the mean, and at the mean.}
 
-\item{data}{The data frame with the relevant variables}
+\item{data}{The data frame with the relevant variables.}
 }
 \value{
 The coefficients, standard errors, t-statistics, and p-values of 
-the regression coefficients table and the simple slopes
+the regression coefficients table and the simple slopes.
 }
 \description{
 Performs a simple two-way interaction and returns simple slopes, as per

@@ -7,23 +7,22 @@
 model4(iv, dv, med, data, samples = 5000)
 }
 \arguments{
-\item{iv}{The name of the independent variable, as a character string}
+\item{iv}{The name of the independent variable, as a character string.}
 
-\item{dv}{The name of the dependent variable, as a character string}
+\item{dv}{The name of the dependent variable, as a character string.}
 
-\item{med}{The name of the mediator, as a character string}
+\item{med}{The name of the mediator, as a character string.}
 
-\item{data}{The data frame with the relevant variables}
+\item{data}{The data frame with the relevant variables.}
 
-\item{samples}{The number of bootstrap resamples. Defaults to 5000}
+\item{samples}{The number of bootstrap resamples. Defaults to 5000.}
 }
 \value{
 Coefficients, standard errors, z-values, p-values, and confidence intervals
 for all estimated parameters. The indirect effect will not return standard errors,
-z-values, or p-values
+z-values, or p-values.
 }
 \description{
 This function will perform simple mediation, using the `lavaan` package.
-It uses maximum likelihood estimation and performs bias-corrected bootstrap 
-resampling for the confidence intervals.
+It uses bias-corrected bootstrap resampling for the confidence intervals.
 }
