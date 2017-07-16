@@ -1,8 +1,6 @@
 # processr
-R implementation for the PROCESS macro
+R implementation for the PROCESS macro. See processr_vignette.Rmd for an introduction to the package.
 
 Still under development. Install using the `devtools` package:
 
 `devtools::install_github("markhwhiteii/processr")`
-
-See the documentation for `model1`, `model4`, `model7`, `model14`. A vignette—and implementing models 8 and 15—are forthcoming.
