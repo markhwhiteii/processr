@@ -1,4 +1,4 @@
-#' Convert Dichotomous Factors to Numeric, 0 or 1, Variable
+#' Convert Dichotomous Factors to Numeric Variable
 #' 
 #' The functions in the `processr` package that a dichotomous variable be turned into a 
 #' numeric variable. This function takes a dichotomous variable and makes
