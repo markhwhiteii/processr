@@ -1,5 +1,5 @@
 # processr
-R implementation for the PROCESS macro. See processr_vignette.Rmd for an introduction to the package.
+R implementation for the PROCESS macro; please read the introduction, which is posted on RPubs: http://rpubs.com/markhw/processr
 
 Still under development. Install using the `devtools` package:
 
