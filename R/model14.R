@@ -44,9 +44,9 @@ model14 <- function(iv, dv, med, mod, data, samples=5000) {
                 
                 ", mod, " ~ modmean*1
                 ", mod, " ~~ modvar*", mod, "
-                ind_lo := a*b1 + imm*-sqrt(modvar)
+                ind_lo := a*b1 + imm*(modmean-sqrt(modvar))
                 ind_mn := a*b1 + imm*modmean
-                ind_hi := a*b1 + imm*sqrt(modvar)")
+                ind_hi := a*b1 + imm*(modmean+sqrt(modvar))")
     set.seed(1839)
     out <- lavaan::parameterEstimates(
       lavaan::sem(model=model, data=data, se="boot", bootstrap=samples), 
