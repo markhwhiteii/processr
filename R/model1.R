@@ -14,18 +14,19 @@
 #' the regression coefficients table and the simple slopes.
 #' @export
 model1 <- function(iv, dv, mod, data) {
-  coefs <- broom::tidy(lm(data[,dv] ~ data[,iv]*data[,mod]))
-  coefs[,1] <- c("intercept", iv, mod, "interaction")
+  coefs <- broom::tidy(lm(data[, dv] ~ data[, iv] * data[, mod]))
+  coefs[, 1] <- c("intercept", iv, mod, "interaction")
   
-  if (all(data[,mod] == 0 | data[,mod] == 1)) {
+  if (all(data[, mod] == 0 | data[, mod] == 1)) {
     sss <- simple_slope(iv, dv, mod, 0, data)
     sss <- rbind(sss, simple_slope(iv, dv, mod, 1, data))
   } else {
-    sss <- simple_slope(iv, dv, mod, mean(data[,mod]) - sd(data[,mod]), data)
-    sss <- rbind(sss, simple_slope(iv, dv, mod, mean(data[,mod]), data))
-    sss <- rbind(sss, simple_slope(iv, dv, mod, mean(data[,mod]) + sd(data[,mod]), data))
+    sss <- simple_slope(iv, dv, mod, mean(data[, mod]) - sd(data[, mod]), data)
+    sss <- rbind(sss, simple_slope(iv, dv, mod, mean(data[, mod]), data))
+    sss <- rbind(sss, simple_slope(iv, dv, mod, mean(data[, mod]) + sd(data[, mod]), data))
   }
+  
   out <- rbind(coefs, sss)
-  rownames(out) <- 1:nrow(out)
+  
   return(out)
 }

@@ -13,6 +13,6 @@
 #' @return A data frame with the new variable added onto it.
 #' @export
 make_numeric <- function(var, ref, newvar, data) {
-  data[,newvar] <- ifelse(data[,var]==ref, 0, 1)
+  data[, newvar] <- ifelse(data[, var] == ref, 0, 1)
   return(data)
 }

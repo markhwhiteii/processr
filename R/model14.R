@@ -14,46 +14,50 @@
 #' @param samples The number of bootstrap resamples. Defaults to 5000.
 #' @return Coefficients, standard errors, z-values, p-values, and confidence intervals
 #' for all estimated parameters. The indirect effects will not return standard errors,
-#' z-values, or p-values.
+#' z-values, or p-values. The labels for each parameter estimate match the labels
+#' provided by Hayes (2015), An Index and Test of Linear Moderated Mediation, in
+#' Multivariate Behavioral Research.
 #' @export
-model14 <- function(iv, dv, med, mod, data, samples=5000) {
+model14 <- function(iv, dv, med, mod, data, samples = 5000) {
+  data[, "medxmod"] <- data[, iv] * data[, mod]
+  dichot <- all(data[, mod] == 0 | data[, mod] == 1)
   
-  if (all(data[,mod] == 0 | data[,mod] == 1)) {
-  
-    data[,"medxmod"] <- data[,med]*data[,mod]
-    model <- paste0(med, " ~ a*", iv, "
-                    ", dv, " ~ b1*", med, " + b2*", mod, " + b3*medxmod + cp*", iv, "
-                    imm := a*b3
-                    ind_0 := a*b1
-                    ind_1 := a*b1 + imm")
-    set.seed(1839)
-    out <- lavaan::parameterEstimates(
-      lavaan::sem(model=model, data=data, se="boot", bootstrap=samples), 
-      boot.ci.type="bca.simple")
-    out[c(14:16),c(6:8)] <- NA
-    out <- out[c(1:5, 14:16),c(4:10)]
-    rownames(out) <- 1:nrow(out)
-    return(out)
-    
+  if (dichot) {
+    model <- paste0(
+      med, " ~ a * ", iv, "\n",
+      dv, " ~ b1 * ", med, " + b2 * ", mod, " + b3 * medxmod + cp*", iv, "\n",
+      "imm := a * b3\nind_0 := a * b1\nind_1 := a * b1 + imm"
+    )
   } else {
-    
-    data[,"medxmod"] <- data[,med]*data[,mod]
-    model <- paste0(med, " ~ a*", iv, "
-                ", dv, " ~ b1*", med, " + b2*", mod, " + b3*medxmod + cp*", iv, "
-                imm := a*b3
-                
-                ", mod, " ~ modmean*1
-                ", mod, " ~~ modvar*", mod, "
-                ind_lo := a*b1 + imm*(modmean-sqrt(modvar))
-                ind_mn := a*b1 + imm*modmean
-                ind_hi := a*b1 + imm*(modmean+sqrt(modvar))")
-    set.seed(1839)
-    out <- lavaan::parameterEstimates(
-      lavaan::sem(model=model, data=data, se="boot", bootstrap=samples), 
-      boot.ci.type="bca.simple")
-    out[c(17:20),c(6:8)] <- NA
-    out <- out[c(1:5, 17:20),c(4:10)]
-    rownames(out) <- 1:nrow(out)
-    return(out)
+    model <- paste0(
+      med, " ~ a * ", iv, "\n",
+      dv, " ~ b1 * ", med, " + b2 * ", mod, " + b3 * medxmod + cp * ", iv, "\n",
+      "imm := a * b3\n",
+      
+      mod, " ~ modmean * 1\n",
+      mod, " ~~ modvar * ", mod, "\n",
+      
+      "ind_lo := a * b1 + imm * (modmean - sqrt(modvar))\n",
+      "ind_mn := a * b1 + imm * modmean\n",
+      "ind_hi := a * b1 + imm * (modmean + sqrt(modvar))"
+    )
   }
+  
+  set.seed(1839)
+  out <- lavaan::parameterEstimates(
+    lavaan::sem(model = model, data = data, se = "boot", bootstrap = samples), 
+    boot.ci.type = "bca.simple"
+  )
+    
+  if (dichot) {
+    out[14:16, 6:8] <- NA
+    out <- out[c(1:5, 14:16), 4:10]
+    rownames(out) <- 1:nrow(out)
+  } else {
+    out[17:20, 6:8] <- NA
+    out <- out[c(1:5, 17:20), 4:10]
+    rownames(out) <- 1:nrow(out)
+  }
+  
+  return(out)
 }
