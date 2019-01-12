@@ -25,7 +25,9 @@ deviation below the mean, a standard deviation above the mean, and at the mean.}
 \value{
 Coefficients, standard errors, z-values, p-values, and confidence intervals
 for all estimated parameters. The indirect effects will not return standard errors,
-z-values, or p-values.
+z-values, or p-values. The labels for each parameter estimate match the labels
+provided by Hayes (2015), An Index and Test of Linear Moderated Mediation, in
+Multivariate Behavioral Research.
 }
 \description{
 This function will perform second-stage moderated mediation, using the `lavaan` package.
