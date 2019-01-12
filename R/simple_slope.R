@@ -14,7 +14,7 @@
 #' @export
 simple_slope <- function(iv, dv, mod, value, data) {
   modv <- data[, mod] - value
-  out <- broom::tidy(lm(data[, dv] ~ data[, iv] * modv))[2, ]
+  out <- broom::tidy(stats::lm(data[, dv] ~ data[, iv] * modv))[2, ]
   out[1, 1] <- paste("when", mod, "=", round(value, 3))
   return(out)
 }
