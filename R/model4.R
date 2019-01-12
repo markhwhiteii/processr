@@ -19,7 +19,6 @@ model4 <- function(iv, dv, med, data, samples = 5000) {
     "ind := a * b\nc := cp + a * b"
   )
   
-  set.seed(1839)
   out <- lavaan::parameterEstimates(
     lavaan::sem(model = model, data = data, se = "boot", bootstrap = samples),
     boot.ci.type = "bca.simple"

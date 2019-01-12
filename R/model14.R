@@ -43,7 +43,6 @@ model14 <- function(iv, dv, med, mod, data, samples = 5000) {
     )
   }
   
-  set.seed(1839)
   out <- lavaan::parameterEstimates(
     lavaan::sem(model = model, data = data, se = "boot", bootstrap = samples), 
     boot.ci.type = "bca.simple"
