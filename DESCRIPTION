@@ -5,7 +5,7 @@ Authors@R: person("Mark", "White", email = "markhwhiteii@gmail.com", role = c("a
 Description: This package runs popular models from Hayes's PROCESS Macro for SPSS and SAS.  
 Depends: 
   R (>= 3.4)
-License: MIT
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: 
