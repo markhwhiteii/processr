@@ -19,7 +19,7 @@
 #' Multivariate Behavioral Research.
 #' @export
 model14 <- function(iv, dv, med, mod, data, samples = 5000) {
-  data[, "medxmod"] <- data[, iv] * data[, mod]
+  data[, "medxmod"] <- data[, med] * data[, mod]
   dichot <- all(data[, mod] == 0 | data[, mod] == 1)
   
   if (dichot) {
